@@ -31,10 +31,14 @@ Com o comando docker run eu falei pro docker criar um container e executa-lo, al
 
 ![dockerRun](images/DockerRun.png)
 
+
 ## Criação de tarefas
 Aqui eu compilei, dentro do container, o código c++ que está no meu computador (g++ app.cpp -o appExec) e o executei dentro do container (./appExec).
 
-No retorno do programa é possível perceber o "appExec" como uma tarefa que está em estado de "S+", onde "S representa Sleeping" e "+ representa que a execução é em primeiro plano", nesse caso o motivo dele estar sleeping é por que foi executado o comando "ps aux", que justamente retorna esses dados, no meio do código e ele nesse momento exato estava esperando o retorno do comando. Além disso, é possível identificar o seu identificador único (PID) que é 279, a quantidade de memória RAM alocada (RSS) que é 3640KB e entre outras informações.
+No retorno do programa é possível perceber o "appExec" como uma tarefa que está em estado de "S+", onde "S" representa "Sleeping" e "+ representa que a execução é em primeiro plano e a tarefa criada pelo comando "ps aux" está em estado "R+" que é em execução em primeiro plano, onde "R" representa "running".
+
+Logo, é possível perceber a alternância entre tarefas que foi estudado em aula, já que a tarefa principal (./appExec) entra em estado de espera por aguardar o retorno da tarefa secundária (ps aux). Além disso, é mostrado informações sobre a tarefa como o seu identificador único (PID) que é 279, a quantidade de memória RAM alocada (RSS) que é 3640KB e entre outras informações.
+
 
 ![execProgram](images/ExecProgram.png)
 
